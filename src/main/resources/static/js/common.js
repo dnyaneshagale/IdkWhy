@@ -51,12 +51,18 @@ function showToast(message, type = 'info', title = '') {
 }
 
 async function apiFetch(path, options = {}) {
+    const requestHeaders = {
+        ...(options.headers ?? {})
+    };
+
+    // Preserve JSON payload semantics even when request-specific headers are supplied.
+    if (options.body && !requestHeaders['Content-Type'] && !requestHeaders['content-type']) {
+        requestHeaders['Content-Type'] = 'application/json';
+    }
+
     const response = await fetch(path, {
-        headers: {
-            'Content-Type': 'application/json',
-            ...(options.headers ?? {})
-        },
-        ...options
+        ...options,
+        headers: requestHeaders
     });
 
     if (response.status === 204) {
