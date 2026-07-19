@@ -2,6 +2,22 @@
 
 Base URL: `/api/rooms`
 
+## Health Check
+
+`GET /health`
+
+`GET /api/health`
+
+Response: `200 OK`
+
+```json
+{
+  "status": "UP",
+  "service": "IdkWhy",
+  "timestamp": "2026-07-20T08:00:00Z"
+}
+```
+
 ## Create Room
 
 `POST /api/rooms`

@@ -22,6 +22,7 @@ Then open:
 
 - Home: http://localhost:8080/
 - Room page: http://localhost:8080/room.html?room=123456
+- Health: http://localhost:8080/health
 
 ## Features
 
